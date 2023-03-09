@@ -1,0 +1,42 @@
+server:
+  port: ${PORT}
+
+spring:
+    application:
+        name: msvc-usuarios
+        
+    datasource:
+        hikari:
+            auto-commit: true
+            connection-timeout: 20000
+            idle-timeout: 30000
+            max-lifetime: 60000
+            maximum-pool-size: 10
+            minimum-idle: 2
+        url: jdbc:mysql://${DB_HOST}/${DB_DATABASE}
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+        
+    info:
+        build:
+            encoding: UTF-8
+      
+    jpa:
+        generate-ddl: true        
+        properties:
+            hibernate:
+                generate_statistics: false
+                dialect: org.hibernate.dialect.MySQL8Dialect                                            
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: debug
+    
+    file:
+        path: /app/logs
+
+msvc:
+    cursos:
+        url: ${CURSOS_URL}
+        
